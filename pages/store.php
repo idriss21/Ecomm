@@ -109,5 +109,19 @@ if(isset($_GET["formStore"]))
                       echo "Erreur De suppréssion !!";
                   }
            
+        }else if($_GET['type']=="update")
+        {
+            $myStore =(int) $_GET['store'];
+            $query = "select StoreID , name , store_url , id_costumer , address from store s , position p where s.id_position = p.positionID AND storeID = ".$myStore;
+             $result = mysqli_query($con, $query);
+                    if (!$result) {
+                     echo 'MySQL Error: ' . mysqli_error($con);
+                         exit();
+                    } 
+             $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+             
+              header("Location: http://localhost:82/Ecomm/addStore.php?".http_build_query($row));
+                         exit(); 
+             
         }
     }

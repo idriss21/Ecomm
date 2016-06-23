@@ -55,3 +55,25 @@ session_start();
             }
            
        }
+       
+       
+       if(isset($_POST['deleteProduct']))
+       {
+           $store = $_POST['store'];
+           
+          
+           
+           foreach($_POST['productID'] as $product){
+               
+               $query2 = "delete from product where productID = ".$product;
+               $query3 ="delete from image where imageID = (select id_image from product where productID = ".$product." ) ";
+               $result = mysqli_query($con, $query2);
+               $result2 = mysqli_query($con, $query3);
+          
+           }
+           
+            header("Location: http://localhost:82/Ecomm/myStore.php?store=".$store);
+                    exit();
+
+           
+       }

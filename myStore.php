@@ -46,6 +46,8 @@
                                 </div>
                             </div>
                         </div>
+                                       <form action="pages/product_dba.php" method="post" >
+                                           <input type="hidden" name="store" value="<?=$_GET['store']?>" />
 						<div class="table-responsive">
 							<table class="cart-table">
 								<thead>
@@ -57,6 +59,8 @@
 									</tr>
 								</thead>
                                                                 <tbody>
+                                                                    
+                                                               
                                                                 <?php
                                                                 
                                                                 
@@ -98,6 +102,7 @@
 										</td>
                                                                                 <td class="text-center add-cart-info">
 											<div class="price-box">
+                                                                                                <span class="selected-product">  <input type="checkbox" name="productID[]" value="<?=$row['productID']?>" />  </span>
 												<span class="old-price"><?=$row['price']?></span>
 												<span class="special-price"><?=$row['price']?></span>
 											</div>
@@ -164,9 +169,10 @@
 						</div>
                         <div class="all-cart-buttons">
                             <a href="addProduct.php?store=<?=$Store?>"> <button class="button btn-cart" type="button"><span>Add More Product</span></button></a>
-                            <button class="button btn-cart" type="button"><span>Delete Product</span></button>
+                            <button class="button btn-cart" name="deleteProduct" type="submit"><span>Delete Product</span></button>
                           
                         </div>
+                                        </form>
 						<div class="back-button">
 							<a href="#"><small>« </small> Back</a>
 						</div>
