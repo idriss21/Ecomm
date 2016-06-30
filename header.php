@@ -1,9 +1,17 @@
+
+        <?php 
+    // On démarre la session AVANT d'écrire du code HTML
+            session_start();
+
+        ?>
+		
+
 <!doctype html>
 <html class="no-js" lang="">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Checkout || Mozar</title>
+        <title>Smart eCommerce Express</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         
@@ -59,11 +67,7 @@
     </head>
     <body>
         
-        <?php 
-    // On démarre la session AVANT d'écrire du code HTML
-            session_start();
 
-        ?>
  
             <!--Header Start-->
         <header>
@@ -73,41 +77,38 @@
                         <div class="row">
                             <div class="col-md-6 col-sm-7">
                                 <div class="header-contact">
-                                    <span class="email">Email:  <?php if(isset($_SESSION["email"])){ echo $_SESSION["email"]; } else { ?> admin@bootexperts.com <?php }  ?> </span> / <span class="phone">Phone: +234.546.657</span>
+                                    <span class="email">Email:  <?php if(isset($_SESSION["email"])){ echo $_SESSION["email"]; } else { ?> smartecommerce@gmail.com.com <?php }  ?> </span> / <span class="phone">Téléphone: +21261457568</span>
                                 </div>
                             </div>
                             <div class="col-md-6 col-sm-5">
                                 <div class="currency-language">
                                     <div class="currency-menu">
                                         <ul>
-                                            <li><a href="#">USD <i class="fa fa-angle-down"></i></a>
+                                            <li><a href="#">Maroc <i class="fa fa-angle-down"></i></a>
                                                 <ul class="currency-dropdown">
-                                                    <li><a href="#">EUR</a></li>
-                                                    <li><a href="#">USD</a></li>
+                                                    <li><a href="#">Maroc</a></li>
                                                 </ul>
                                             </li>
                                         </ul>
                                     </div>
                                     <div class="language-menu">
                                         <ul>
-                                            <li><a href="#">English <i class="fa fa-angle-down"></i></a>
+                                            <li><a href="#">Français <i class="fa fa-angle-down"></i></a>
                                                 <ul class="language-dropdown">
-                                                    <li><a href="#">French</a></li>
-                                                    <li><a href="#">English</a></li>
-                                                    <li><a href="#">German</a></li>
-                                                    <li><a href="#">Arabic</a></li>
+                                                    <li><a href="#">Français</a></li>
                                                 </ul>
                                             </li>
                                         </ul>
                                     </div>
                                     <div class="account-menu">
                                         <ul>
-                                            <li><a href="account.php">My Account <i class="fa fa-angle-down"></i></a>
+                                            <li><a href="account.php">Mon Compte <i class="fa fa-angle-down"></i></a>
                                                 <ul class="account-dropdown">
-                                                    <li><a href="#">My Wishlist</a></li>
-                                                    <li><a href="#">My Cart</a></li>
+													<li><a href="account.php">Mon Espace</a></li>
+													<li><a href="addproduct.php">Mon Store</a></li>
+                                                    <li><a href="#">Mon Désire</a></li>
+                                                    <li><a href="#">Mon Panier</a></li>
                                                     <li><a href="#">Checkout</a></li>
-                                                    <li><a href="#">Blog</a></li>
                                                     <li><a href="pages/account.php">  <?php if(isset($_SESSION['ID_USER'])) echo "Log Out"; else echo "Login";  ?>   </a></li>
                                                 </ul>
                                             </li>
@@ -133,19 +134,44 @@
                                     <form class="search-box" action="#" method="post">
                                         <div class="search-categories">
                                             <div class="search-cat">
-                                                <select class="category-items " name="category">
-                                                    <option>All Categories</option>
-                                                    <option>Women</option>
-                                                    <option>Men</option>
-                                                    <option>Jewllery</option>
-                                                    <option>Bootees Bags</option>
-                                                    <option>Clothing</option>
-                                                    <option>Footwear</option>
-                                                    <option>T-Shirts</option>
-                                                </select>
+											
+											<?php  
+
+									
+												 $con = new mysqli("localhost","root", "", "e_comm_db");
+												 // Check connection
+													if (mysqli_connect_errno())
+													  {
+													  echo "Failed to connect to MySQL: " . mysqli_connect_error();
+              }
+
+
+?>
+											
+										    <select class="category-items" name="category">
+                                                                            <option value="">Toute Categorie</option>
+                                                                        <?php
+                                                                          $query =  "select categoryID , name from category ";
+                                                                          
+                                                                           $result = mysqli_query($con, $query);
+                                                                        if (!$result) {
+                                                                         echo 'MySQL Error: ' . mysqli_error($con);
+                                                                             exit;
+                                                                        }  
+                                                                        
+                                                                         while ($row = mysqli_fetch_assoc($result))
+                                                                   {
+                                                         
+                                                                        ?>
+                                                                        
+                                                                        <option value="<?=$row['categoryID']?>"><?=$row['name']?></option>
+                                                                   <?php }  ?>
+                                                                    </select>
+
+                                  
                                             </div>
                                         </div>
-                                        <input type="search" placeholder="Search here..." id="text-search" name="search">
+                                        <input type="search" placeholder="Chercher ici..." id="text-search" name="search">
                                         <button id="btn-search-category" type="submit">
                                             <i class="icon-search"></i>
                                         </button>
@@ -154,7 +180,7 @@
                             </div>
                             <div class="col-lg-3 col-md-3 col-sm-4">
                                 <ul class="header-r-cart">
-                                    <li><a class="cart" href="cart.html">My Cart:2 items</a>
+                                    <li><a class="cart" href="cart.html">Mon Panier:X items</a>
                                         <div class="mini-cart-content">
                                             <div class="cart-products-list">
                                                 <div class="cart-products">
@@ -163,8 +189,8 @@
                                                     </div>
                                                     <div class="cart-product-info">
                                                         <a href="#" class="product-name"> Donec ac tempus </a>
-                                                        <a class="edit-product">Edit item</a>
-                                                        <a class="remove-product">Remove item</a>
+                                                        <a class="edit-product">Modifier Produit</a>
+                                                        <a class="remove-product">Supprimer produit</a>
                                                         <div class="price-times">
                                                             <span class="quantity"><strong> 1 x</strong></span>
                                                             <span class="p-price">$100.00</span>
@@ -209,15 +235,15 @@
                                 <div class="mainmenu">
                                     <nav>
                                         <ul id="nav">
-                                            <li class="current"><a href="index.html">Home</a>
-                                                <ul class="sub-menu">
+                                            <li class="current"><a href="#">Home</a>
+<!--                                                <ul class="sub-menu">
                                                     <li><a href="#" class="mega-title">Homepage</a></li>
                                                     <li><a href="index-2.html">Homepage Version 2</a></li>
                                                     <li><a href="index-3.html">Homepage Version 3</a></li>
                                                     <li><a href="index-4.html">Homepage Version 4</a></li>
-                                                </ul>
+                                                </ul>-->
                                             </li>
-                                            <li><a href="shop-grid.html">Women</a>
+<!--                                            <li><a href="shop-grid.html">Women</a>
                                                 <div class="megamenu">
                                                     <div class="megamenu-list clearfix">
                                                         <span>											
@@ -295,23 +321,19 @@
                                                     </div>
                                                 </div>
                                             </li>
-                                            <li><a href="shop-grid.html">Footwear</a></li>
-                                          <!--  <li><a href="index.html">Pages</a>
+                                            <li><a href="shop-grid.html">Footwear</a></li>-->
+                                            <li><a href="index.html">Pages</a>
                                                 <ul class="sub-menu">
-                                                    <li><a href="#" class="mega-title">Other Pages</a></li>
-                                                    <li><a href="about.html">About Us</a></li>
-                                                    <li><a href="blog.html">Blog Page</a></li>
-                                                    <li><a href="blog-details.html">Blog Details Page</a></li>
-                                                    <li><a href="account.html">My Account</a></li>
-                                                    <li><a href="cart.html">Cart Page</a></li>
-                                                    <li><a href="checkout.html">Checkout Page</a></li>
-                                                    <li><a href="product-details.html">Product Details</a></li>
-                                                    <li><a href="shop-grid.html">Shop Grid</a></li>
-                                                    <li><a href="shop-list.html">Shop List</a></li>
-                                                    <li><a href="wishlist.html">Wishlist</a></li>
+                                                    <li><a href="#" class="mega-title">Autres Pages</a></li>
+                                                    <li><a href="#">A propos de nous</a></li>
+                                           
+                                                    <li><a href="account.php">Mon Compte</a></li>
+                                         
+                                                    
+                                                    <li><a href="wishlist.html">Favoris</a></li>
                                                 </ul>
-                                            </li>-->
-                                            <li><a href="contact.html">Contact Us</a></li>
+                                            </li>
+                                            <li><a href="#">Contactez Nous</a></li>
                                         </ul>
                                     </nav>
                                 </div>        

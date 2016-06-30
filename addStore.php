@@ -53,11 +53,11 @@
                                     <h1>Ajouter le Store</h1>
                                 </div>
                                 <div class="contact-form">
-                                    <span class="legend">Contact Information</span>
+                                    <span class="legend">Store Information</span>
                                     <form action="pages/store.php" method="get">
                                         <div class="form-top">
                                             <div class="form-group col-sm-6 col-md-6 col-lg-6">
-                                                <label>Name  :<span class="required" title="required">*</span></label>
+                                                <label>Nom   :<span class="required" title="required">*</span></label>
                                                 <input name="name" type="text" value="<?php  if(isset($_GET['name'])) {  echo  $_GET['name']; } ?>"  class="form-control">
                                             </div>
                                             <div class="form-group col-sm-6 col-md-6 col-lg-6">
@@ -68,7 +68,7 @@
                                                                                
                                                    
                                             <div class="form-group col-sm-12 col-md-12 col-lg-12">
-                                                <label>Description Store :<span class="required" title="required">*</span></label>
+                                                <label>Description de Store :<span class="required" title="required">*</span></label>
                                                 <textarea name="description" class="yourmessage"></textarea>
                                             </div>
 

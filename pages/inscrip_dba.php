@@ -56,7 +56,7 @@ session_start();
                                $_SESSION["ID_USER"]=$costumer_id;
                                 $_SESSION["userInfo"]=$row["first_name"]+" "+$row["last_name"];
                                 $_SESSION["email"]=$row["email"];
-                                  header('Location: http://localhost:82/Ecomm/index.php');
+                                  header('Location: http://localhost:82/Ecomm/account.php');
                               exit();
                           }
                       }
@@ -100,7 +100,7 @@ session_start();
                               $_SESSION["ID_USER"]= $row["costumerID"];
                               $_SESSION["userInfo"]=$row["first_name"]+" "+$row["last_name"];
                               $_SESSION["email"]=$row["email"];
-                              header('Location: http://localhost:82/Ecomm/index.php');
+                              header('Location: http://localhost:82/Ecomm/account.php');
                               exit();
                               
                           }else

@@ -4,7 +4,7 @@
         {
             include './pages/ErrorPage.php';;
            exit();
-        }else if(empty($_GET['store']))
+        }else if(empty($_GET['id_store']))
         {
             echo " <h2 align='center' style='color : red;'>Store not selected !!</h2>'";
             die();
@@ -33,10 +33,10 @@
 
                             <div class="banner-box">
                                
-                              <a href="#"><img class="myAvatar" id="output" src="img/product/9.jpg" alt=""></a>
+                                <a href="#"><img class="myAvatar" id="output" src="pages/<?=$_GET['url_image']?>" alt=""></a>
                               <div id="err"></div>
                               <input id="uploadImage" type="file" name="fileToUpload" class="newAvatar" style="display:none;" accept="image/*"  onchange="loadFile(event)" />
-                              <input  type="hidden"   name="store" value="<?=$_GET['store']?>"/>
+                             
                              </div>
 
                                 
@@ -89,7 +89,7 @@
                     <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
                         <div class="contact-us-area">
 
-                               <?php if(empty($_GET['store'])) { ?>
+                               <?php if(empty($_GET['id_store'])) { ?>
 			          <p class="warning">Create Store before adding product</p>
 	                                    
                                     <?php } ?>
@@ -106,16 +106,19 @@
                                         <div class="form-top">
                                             <div class="form-group col-md-4 col-sm-4 col-xs-4">
                                                 <label>Name  :<span class="required" title="required">*</span></label>
-                                                <input name="name" type="text" class="form-control">
+                                                <input name="name" value="<?=$_GET['prod']?>" type="text" class="form-control">
                                             </div>
                                             
                                             
                                            <div id="ImageIDUpload"></div>
                                             
                                             
-                                            <input type="hidden" name="store" value="<?=$_GET['store']?>"/>
-                                            
-                                            
+                                                <input type="hidden" name="store" value="<?=$_GET['id_store']?>"/>
+                                             
+                                                <input  type="hidden"   name="oldProduct" value="<?=$_GET['productID']?>"/>
+                                                
+                                                <input type="hidden" name="oldImage" value="<?=$_GET['id_image']?>" />
+                                    
                                             
                                             <div class="col-md-4 col-sm-4 col-xs-4">
                                                   <label>Category  :<span class="required" title="required">*</span></label>
@@ -135,7 +138,10 @@
                                                          
                                                                         ?>
                                                                         
-                                                                        <option value="<?=$row['categoryID']?>"><?=$row['name']?></option>
+                                                                        <option  <?php
+                                                                            if($row['categoryID'] == $_GET['id_category'])  echo " selected='selected'"; 
+                                                                        ?>
+                                                                        value="<?=$row['categoryID']?>"><?=$row['name']?></option>
                                                                    <?php }  ?>
                                                                     </select>
                                                                
@@ -147,17 +153,17 @@
                                                    
                                             <div class="form-group col-sm-12 col-md-12 col-lg-12">
                                                 <label>Description Produit :<span class="required" title="required">*</span></label>
-                                                <textarea name="description" class="yourmessage"></textarea>
+                                                <textarea name="description"  class="yourmessage"><?=$_GET['description']?></textarea>
                                             </div>
 
 
                                              <div class="form-group col-md-4 col-sm-4 col-xs-4">
                                             <label>Qte  :<span class="required" title="required">*</span></label>
-                                                <input name="qte" type="text" class="form-control">
+                                                <input name="qte" value="<?=$_GET['quantity']?>" type="text" class="form-control">
                                             </div>
                                              <div class="form-group col-md-4 col-sm-4 col-xs-4">
                                             <label>Price  :<span class="required" title="required">*</span></label>
-                                                <input name="price" type="text" class="form-control">
+                                            <input name="price" value="<?=$_GET['price']?>" type="text" class="form-control">
                                             </div>
 
 
@@ -167,7 +173,7 @@
                                         <div class="submit-form form-group col-sm-12 submit-review">
                                             <p class="floatright"><sup>*</sup> Required Fields</p>
                                             <div class="clearfix"></div>
-                                            <button class="button btn-lg floatright" name="addProuct"  type="submit"><span>Ajouter</span></button>
+                                            <button class="button btn-lg floatright" name="editProduct"  type="submit"><span>Modifier</span></button>
 
 
                                         </div>
@@ -218,7 +224,7 @@
                    else if(!isNaN(data))
                    {
                     // view uploaded file.
-                    $("#ImageIDUpload").html("<input type='hidden' name='image' value='"+data+"' />").fadeIn();
+                    $("#ImageIDUpload").html("<input type='hidden' name='newImage' value='"+data+"' />").fadeIn();
                      $("#err").html("Image chargée avec succés !").fadeIn();
                     $("#form")[0].reset(); 
                    }else

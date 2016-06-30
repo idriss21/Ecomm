@@ -26,7 +26,11 @@ if(isset($_FILES['fileToUpload']))
            
       
             $target_dir = "uploads/";
-        $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+            $imgName = explode(".", basename($_FILES["fileToUpload"]["name"]));
+                $name_image = $imgName[0]."_".rand(10,100000);
+                $ext_image = $imgName[1];
+            
+        $target_file = $target_dir .$name_image.'.'.$ext_image;
         $uploadOk = 1;
         $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
         // Check if image file is a actual image or fake image
@@ -36,7 +40,7 @@ if(isset($_FILES['fileToUpload']))
                 echo "File is an image - " . $check["mime"] . ".";
                 $uploadOk = 1;
             } else {
-                echo "File is not an image.";
+                echo "le fichier n est pas une  image.";
                 $uploadOk = 0;
             }
         }

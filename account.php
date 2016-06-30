@@ -40,23 +40,23 @@
                     <div class="col-md-12">
                         <div class="account-link-list">
                             <div class="page-title">
-                                <h1>My Account</h1>
+                                <h1>Mon Compte</h1>
                             </div>
-                            <p class="account-info">Welcome to your account. Here you can manage all of your personal information and orders.</p>
+                            <p class="account-info">Bienvenue sur votre compte . Ici, vous pouvez gérer tous vos renseignements personnels et les commandes .</p>
                             <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
                                 <div class="panel panel-default">
                                     <div class="panel-heading" role="tab" id="headingOne">
                                         <h4 class="panel-title">
                                             <a role="button" data-toggle="collapse" data-parent="#accordion" href="#order">                                         
-                                                <i class="fa fa-list-ol"></i><span>Order history and details</span>
+                                                <i class="fa fa-list-ol"></i><span>Historique des commandes et les détails</span>
                                             </a>
                                         </h4>
                                     </div>
                                     <div id="order" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
                                         <div class="panel-body">
-                                            <p class="panel-title">Here are the orders you've placed since your account was created.</p>
+                                            <p class="panel-title">Voici les commandes que vous avez placé depuis votre compte a été créé.</p>
                                             <div id="orders-history">
-			                                    <p class="warning">You have not placed any orders.</p>
+			                                    <p class="warning">Vous n'avez passé aucune commande.</p>
 	                                       </div>                                    
                                         </div>
                                     </div>
@@ -65,7 +65,7 @@
                                     <div class="panel-heading" role="tab" id="headingTwo">
                                         <h4 class="panel-title">
                                             <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#credit">
-                                                <i class="fa fa-file-o"></i><span>MY Store</span>
+                                                <i class="fa fa-file-o"></i><span>Mon Store</span>
                                             </a>
                                         </h4>
                                     </div>
@@ -76,7 +76,7 @@
                                                 
                                                 <?php  if( isset($store_id)  AND  $store_id>0 )  {  ?>
                                                 <div class="row">
-                                                     <div class="col-md-8">   <a href="pages/store.php?myStore=<?=$store_id?>">  My Store</a>  </div>
+                                                     <div class="col-md-8">   <a href="pages/store.php?myStore=<?=$store_id?>">  Mon Store</a>  </div>
                                                     <div class="col-xs-4"> 
                                                       <a href="pages/store.php?myStore=<?=$store_id?>"> <button type="button" class="btn btn-success">OPEN</button></a> 
                                                        <a href="pages/store.php?store=<?=$store_id?>&type=update"><button type="button" class="btn btn-primary">UPDATE</button></a>
@@ -85,8 +85,8 @@
                                                 </div>
 			                                    
                                                             
-                                      <?php } else { ?>   <p class="warning">You don't have any store know .</p>
-                                                      </div>     <p class="panel-title"> <a href="addStore.php">Create new Store </a> </p>
+                                      <?php } else { ?>   <p class="warning">Vous n'avez pas de store</p>
+                                                      </div>     <p class="panel-title"> <a href="addStore.php">Créer un nouveau Store </a> </p>
                                                      <?php } ?>
 	                                       
 																				   
@@ -97,19 +97,19 @@
                                     <div class="panel-heading" role="tab" id="headingThree">
                                         <h4 class="panel-title">
                                             <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#address">
-                                                <i class="fa fa-building"></i><span>My addresses</span>
+                                                <i class="fa fa-building"></i><span>Mon Adresse</span>
                                             </a>
                                         </h4>
                                     </div>
                                     <div id="address" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
                                         <div class="panel-body">
-                                            <p>Please configure your default billing and delivery addresses when placing an order. You may also add additional addresses, which can be useful for sending gifts or receiving an order at your office.</p>
-                                            <p class="panel-title">Your addresses are listed below. </p>
-                                            <p>Be sure to update your personal information if it has changed.</p>
+                                            <p>S'il vous plaît configurer votre facturation par défaut et les adresses de livraison lors de la commande . Vous pouvez également ajouter des adresses supplémentaires , qui peuvent être utiles pour l'envoi de cadeaux ou de recevoir une commande à votre bureau .</p>
+                                            <p class="panel-title">Vos adresses sont listées ci-dessous. </p>
+                                            <p>Assurez-vous de mettre à jour vos informations personnelles si elle a changé .</p>
                                             <div class="row">
                                                 <div class="col-lg-6 col-md-8 col-sm-10 address">
                                                     <ul class="address-information">
-                                                        <li><h3>My address</h3></li>
+                                                        <li><h3>Mon Adresse</h3></li>
                                                         <li>
                                                             <span class="address-name">Jhon</span>
                                                             <span class="address-name">Andrew</span>
@@ -304,7 +304,7 @@
                                     <div class="panel-heading" role="tab" id="headingFour">
                                         <h4 class="panel-title">
                                             <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#information">
-                                                <i class="fa fa-user"></i><span>My personal information</span>
+                                                <i class="fa fa-user"></i><span>Mes informations personnelles</span>
                                             </a>
                                         </h4>
                                     </div>
@@ -312,7 +312,7 @@
                                         <div class="panel-body">
                                             <div class="row">   
                                                 <div class="personal-info col-lg-6 col-md-8 col-sm-10">
-                                                    <p class="panel-title">Please be sure to update your personal information if it has changed. </p>
+                                                    <p class="panel-title">S'il vous plaît assurez-vous de mettre à jour vos informations personnelles si elle a changé . </p>
                                                     <div id="account-info">
                                                         <div class="row">
                                                             <div class="form-group required fix no-margin">
@@ -570,7 +570,7 @@
                                     <div class="panel-heading" role="tab" id="headingFive">
                                         <h4 class="panel-title">
                                             <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#wishlist">
-                                                <i class="fa fa-heart"></i><span>My wishlists</span>
+                                                <i class="fa fa-heart"></i><span>Mes Favoris</span>
                                             </a>
                                         </h4>
                                     </div>
@@ -602,7 +602,7 @@
                     </div>
                     <div class="col-md-12">
                         <div class="button-back">
-                            <a href="account.html" class="read-button floatleft"><span>Back to your Account</span></a>
+                            <a href="account.html" class="read-button floatleft"><span>Retour à votre compte</span></a>
                         </div>
                         <div class="button-home">
                             <a href="index.html" class="read-button floatleft"><span>Home</span></a>

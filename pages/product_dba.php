@@ -11,7 +11,47 @@ session_start();
               echo "Failed to connect to MySQL: " . mysqli_connect_error();
               }
               
+      
               
+              if(isset($_POST['editProduct']))
+              {
+                  $productID = $_POST['oldProduct'];
+                  
+                  if(isset($_POST['oldImage']))  $old_image = (int) $_POST['oldImage'];
+                  if(isset($_POST['newImage'])) $new_image = (int) $_POST['newImage'];
+                  $store = $_POST['store'];
+                  $name = $_POST['name'];
+                  $price = $_POST['price'];
+                  $qte = $_POST['qte'];
+                  $description = $_POST['description'];
+                  $category = $_POST['category'];
+                  
+                  
+                  if(!empty($new_image)) $image = $new_image;
+                  else  $image = $old_image;
+                  
+                  $query = " UPDATE `product` SET `name`='$name',`description`='$description',`price`=$price,`quantity`=$qte,`id_category`=$category,`id_image`=$image WHERE `productID`=$productID ";
+                  
+                    $result = mysqli_query($con, $query);
+                    if (!$result) {
+                     echo 'MySQL Error: ' . mysqli_error($con);
+                         exit;
+                    }  
+                    
+                     $prduct_id = mysqli_affected_rows($con);
+                     
+                     
+                      if($prduct_id >0)
+                    {
+                          header("Location: http://localhost:82/Ecomm/myStore.php?store=$store");
+                            exit(); 
+                    }  else {
+                        echo "Erreur d'ajout";
+                    }
+                  
+                  
+                  
+              }
          
               
               
@@ -76,4 +116,30 @@ session_start();
                     exit();
 
            
+       }
+       
+       
+       if(isset($_GET['store']) AND isset($_GET['type']) AND $_GET['type']='edit'   )
+       {
+          if(isset($_GET['item']) AND $_GET['item'] > 0 )
+          {
+              
+              $store = $_GET['store'];  $product=$_GET['item'];
+              
+              $query = " SELECT `productID` , p.`name` as prod , p.`description`, `price`, `quantity`, "
+                      . "`id_category`,c.name , i.url_image, `id_image`, `id_store`"
+                      . "    FROM `product` p , category c , image i"
+                      . "       where i.imageID = p.id_image AND p.id_category = c.categoryID "
+                      . "       AND id_store = $store  AND productID = $product ";
+               $result = mysqli_query($con, $query);
+                    if (!$result) {
+                     echo 'MySQL Error: ' . mysqli_error($con);
+                         exit();
+                    } 
+             $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+             
+              header("Location: http://localhost:82/Ecomm/editProduct.php?".http_build_query($row));
+                         exit(); 
+             
+          }
        }

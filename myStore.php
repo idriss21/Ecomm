@@ -19,21 +19,15 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-3 col-sm-12">
-						<div class="section-title no-margin"><h2>My Account</h2></div>
+						<div class="section-title no-margin"><h2>Mon Compte</h2></div>
 						<aside>
 							<div class="wishlist-left-sidebar">
 								<ul>
-									<li><a href="#">Account Dashboard</a></li>
-									<li><a href="#">Account Information</a></li>
-									<li><a href="#">Address Book</a></li>
-									<li><a href="#">My Orders</a></li>
-									<li><a href="#">Billing Agreements</a></li>
-									<li><a href="#">Recurring Profiles</a></li>
-									<li><a href="#">My Product Reviews</a></li>
-									<li><a href="#">My Tags</a></li>
-									<li><a href="wishlist.html">My Wishlist</a></li>
-									<li><a href="#">My Applications</a></li>
-									<li><a href="#">My Downloadable Products</a></li>
+									
+									<li><a href="#">Information du compte</a></li>
+									<li><a href="#">Adresse</a></li>
+									<li><a href="#">Mes Commandes</a></li>
+									<li><a href="#">Mes Favoris</a></li>
 								</ul>
 							</div>
 						</aside>
@@ -42,7 +36,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="page-title">
-                                    <h1>My Product</h1>
+                                    <h1>Mes Produits</h1>
                                 </div>
                             </div>
                         </div>
@@ -52,9 +46,9 @@
 							<table class="cart-table">
 								<thead>
 									<tr>
-										<th class="product-img">Product Image</th>
-										<th>Product Details and Comment</th>
-										<th class="text-center add-cart-info">Add to Cart</th>
+										<th class="product-img">Image Produit</th>
+										<th>Produit détail et commentaire</th>
+										<th class="text-center add-cart-info">Traitement</th>
 										<th></th>
 									</tr>
 								</thead>
@@ -108,7 +102,7 @@
 											</div>
 											<form action="#" method="post" class="wishlist-qty">
 												<input type="text" name="quantity" value="<?=$row['quantity']?>" maxlength="12">
-                                                                                                <button class="button btn-cart" name="edit[]" value="<?=$row['productID']?>" type="button"><span>Edit Item</span></button>
+                                                                                                <a href="pages/product_dba.php?type=edit&item=<?=$row['productID']?>&store=<?=$Store?>"><button class="button btn-cart"  type="button"><span>Modifier</span></button></a> 
 											</form>
 											
 										</td>
@@ -168,8 +162,8 @@
 							</table>
 						</div>
                         <div class="all-cart-buttons">
-                            <a href="addProduct.php?store=<?=$Store?>"> <button class="button btn-cart" type="button"><span>Add More Product</span></button></a>
-                            <button class="button btn-cart" name="deleteProduct" type="submit"><span>Delete Product</span></button>
+                            <a href="addProduct.php?store=<?=$Store?>"> <button class="button btn-cart" type="button"><span>Ajouter plus</span></button></a>
+                            <button class="button btn-cart" name="deleteProduct" type="submit"><span>Supprimer</span></button>
                           
                         </div>
                                         </form>

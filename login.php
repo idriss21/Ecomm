@@ -6,10 +6,7 @@
                     <div class="col-lg-3 col-md-3">
                         <div class="sidebar-content">
 
-                            <div class="banner-box">
-                                <a href="#"><img src="img/banner/14.jpg" alt=""></a>
-                            </div>
-
+                          
 
                        </div>
                     </div>
@@ -19,7 +16,7 @@
 							<!-- contact us form start -->
 							<div class="contact-us-form">
 								<div class="page-title">
-                                    <h1>Checkout</h1>
+                                    <h1>Authentification</h1>
                                 </div>
 								<div class="contact-form">
 									<span class="legend">Contact Information</span>
@@ -36,10 +33,11 @@
 																							
 										</div>
 										<div class="submit-form form-group col-sm-12 submit-review">
-											<p class="floatright"><sup>*</sup> Required Fields</p>
-                                            <div class="clearfix"></div>
-                                            <button class="button floatright" name="logIn" type="submit"><span>Submit</span></button>
+											<p class="floatright"><sup>*</sup>  Champs requis</p> 
+                                                                                        <div class="clearfix">   <a href="inscription.php">Inscription</a> </div>
+                                            <button class="button floatright" name="logIn" type="submit"><span>Connecter</span></button>
 										</div>
+                                                                           
 									</form>
 								</div>
 							</div>
